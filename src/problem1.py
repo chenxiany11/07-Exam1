@@ -2,8 +2,8 @@
 Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Xianying Chen
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -89,10 +89,22 @@ def problem1a(rectangle, square, thickness, window):
       :type window:    rg.RoseWindow
     """
     # --------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
 
+    rectangle.attach_to(window)
+    square.attach_to(window)
+    center_s = square.center
+    ur = rectangle.get_upper_right_corner()
+    ul = rectangle.get_upper_left_corner()
+    mid_top_edge = rg.Point((ur.x+ul.x)/2, ur.y)
+
+    line1 = rg.Line(center_s, mid_top_edge)
+    line1.thickness = thickness
+    line1.color = rectangle.outline_color
+    line1.attach_to(window)
+    window.render()
 
 def run_test_problem1b():
     """ Tests the  problem1b   function. """
@@ -149,10 +161,15 @@ def problem1b(point, win, width, height, color):
       :type color:  str
     """
     # --------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # Done: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
 
+    ep = rg.Point(point.x-0.5*width, point.y+0.5*height)
+    ellipse = rg.Ellipse(point, ep)
+    ellipse.fill_color = color
+    ellipse.attach_to(win)
+    win.render()
 
 # ------------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
