@@ -165,8 +165,11 @@ def problem1b(point, win, width, height, color):
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
 
-    ep = rg.Point(point.x-0.5*width, point.y+0.5*height)
-    ellipse = rg.Ellipse(point, ep)
+    ep = rg.Point((point.x+0.5*width), (point.y+height))
+    tp = rg.Point((point.x - 0.5*width), point.y)
+
+    ellipse = rg.Ellipse(tp, ep)
+
     ellipse.fill_color = color
     ellipse.attach_to(win)
     win.render()
